@@ -1,9 +1,8 @@
-from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import time
 def test_can_start_a_list_and_retrieve_it_later(self):
 
-    browser = webdriver.Firefox()
+  #  browser = webdriver.Firefox()
     self.browser.get('http://localhost:8000')
 
     self.assertIn('To-Do',self.browser.title)
@@ -24,7 +23,9 @@ def test_can_start_a_list_and_retrieve_it_later(self):
     table = self.browser.find_element_by_id('id_list_table')
     rows = table.find_elements_by_tag_name('tr')
     self.assertTrue( 
-          any(row.text=='1: Buy peacoke feathers' for row in rows)
+          any(row.text=='1: Buy peacoke feathers' for row in rows),
+          "New to-do item did not appear in table"
      )
      
     self.fail('Finish the test!')
+
